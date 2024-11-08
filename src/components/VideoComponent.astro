@@ -9,14 +9,23 @@ const { src, title } = Astro.props;
 
 
 <video 
+  id="myVideo"
   class="fullscreen-video"
   src={src} 
   title={title}
-  autoplay 
   loop 
   playsinline
 >
 </video>
+
+<script>
+  const video = document.getElementById('myVideo') as HTMLVideoElement;
+  video.play().catch(() => {
+    // Si autoplay falla, se muestran los controles para que el usuario lo inicie manualmente
+    video.setAttribute('controls', 'controls');
+  });
+</script>
+
 
 
 
